@@ -6,6 +6,12 @@ public class Token {
     public static final int TK_OPERATOR = 2;
     public static final int TK_PONTUACTION = 3;
     public static final int TK_ASSIGN = 4;
+    public static final int TK_ARIT=5;
+    public static final int TK_OP=6;
+    public static final int TK_SPECIAL=7;
+    public static final int TK_RESERVED=8;
+    public static final int TK_FLOAT = 9;
+    public static final int TK_END=99;
 
     private int type;
     private String text;
@@ -35,5 +41,37 @@ public class Token {
     public void setText(String text) {
         this.text = text;
     }
+
+	@Override
+	public String toString() {
+		
+		switch(type){
+		case 1:
+			return "Token [type= INTEIRO" + ", text= " + text + "]";
+		
+		case 9:
+			return "Token [type= DOUBLE" + ", text= " + text + "]";
+			
+		case 8:
+			return "Token [type= PALAVRA RESERVADA" + ", text= " + text + "]";
+		
+		case 0:
+			return "Token [type= STRING" + ", text= " + text + "]";
+			
+		case 2:
+			return "Token [type= OPERANDO" + ", text= " + text + "]";
+			
+		case 7:
+			return "Token [type= TERMO ESPECIAL" + ", text= " + text + "]";	
+		
+		case 5:
+			return "Token [type= ARITIMETICO" + ", text= " + text + "]";
+		
+		case 99: 
+			return "Token [type= ENCERRA PROGRAMA" + ", text= " + text + "]";
+	
+		}
+		return text;	
+	}
 
 }

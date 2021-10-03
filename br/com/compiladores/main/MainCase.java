@@ -14,7 +14,7 @@ public class MainCase {
                 if (token != null) {
                     System.out.println(token);
                 }
-            } while (token != null);
+            } while (token != null || token.getType()==99);
         } catch (IsiLexicalException ex) {
             System.out.println("Lexical ERROR " + ex.getMessage());
 
