@@ -215,7 +215,7 @@ public class IsiScanner {
     }
 
     private boolean isAr(char c) {
-        return c == '+' || c == '-' || c == '*' || c == '/';
+        return c == '+' || c == '-' || c == '*';
     }
 
     private char nextChar() {
