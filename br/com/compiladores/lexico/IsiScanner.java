@@ -32,12 +32,9 @@ public class IsiScanner {
             return null;
         }
         estado = 0;
-        Boolean acabou = false;
         while (true) {
             currentChar = nextChar();
-            if(acabou == true){
-                return null;
-            }
+
             switch (estado) {
                 case 0:
                     if (isSpace(currentChar)) {
@@ -63,7 +60,10 @@ public class IsiScanner {
                     } else if (isEndOfLine(currentChar)) {
                         term += currentChar;
                         estado = 12;
-                    } else {
+                    } else if (isStartOfLine(currentChar)) {
+                        term += currentChar;
+                        estado = 13;
+                    }else {
                         throw new IsiLexicalException("Simbolo desconhecido");
                     }
                     break;
@@ -166,16 +166,20 @@ public class IsiScanner {
                     token = new Token();
                     token.setText(term);
                     token.setType(99);
-                    acabou = true;
-                    return token;
+                    break;
                 case 12: // fim da linha
                     token = new Token();
                     token.setText(term);
                     token.setType(6);
                     return token;
 
-            }
-        }
+                case 13: // comeco da linha
+                    token = new Token();
+                    token.setText(term);
+                    token.setType(15);
+                    return token;
+                }
+            }  
     }
 
     private boolean isDigit(char c) {
@@ -204,6 +208,10 @@ public class IsiScanner {
 
     private boolean isEndOfLine(char c){
         return c == '%';
+    }
+
+    private boolean isStartOfLine(char c){
+        return c == '/';
     }
 
     private boolean isAr(char c) {
