@@ -14,12 +14,10 @@ public class MainCase {
                 if (token != null) {
                     System.out.println(token);
                 }
-            } while (token != null || token.getType()==99);
+            } while (token != null);
+            
         } catch (IsiLexicalException ex) {
             System.out.println("Lexical ERROR " + ex.getMessage());
-
-        } catch (Exception ex) {
-            System.out.println("Generical Error");
 
         }
     }
