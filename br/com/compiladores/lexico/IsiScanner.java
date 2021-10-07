@@ -27,8 +27,6 @@ public class IsiScanner {
     public Token nextToken() {
         char currentChar;
         Token token;
-        int cont = 0;
-                
 
         String term = "";
         if (isEOF()) {
@@ -166,11 +164,7 @@ public class IsiScanner {
                     token = new Token();
                     token.setText(term);
                     token.setType(99);
-                    if (cont == 0){
-                        System.out.println(token); 
-                    }
-                    cont ++;
-                    break;
+                    return token;
                 case 12: // fim da linha
                     token = new Token();
                     token.setText(term);
