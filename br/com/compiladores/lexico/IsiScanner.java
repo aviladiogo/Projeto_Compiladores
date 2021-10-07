@@ -32,9 +32,12 @@ public class IsiScanner {
             return null;
         }
         estado = 0;
+        Boolean acabou = false;
         while (true) {
             currentChar = nextChar();
-
+            if(acabou == true){
+                return null;
+            }
             switch (estado) {
                 case 0:
                     if (isSpace(currentChar)) {
@@ -54,10 +57,12 @@ public class IsiScanner {
                     } else if (isAr(currentChar)) {
                         term += currentChar;
                         estado = 10;
-
                     } else if (isEndOfFile(currentChar)) {
                         term += currentChar;
                         estado = 11;
+                    } else if (isEndOfLine(currentChar)) {
+                        term += currentChar;
+                        estado = 12;
                     } else {
                         throw new IsiLexicalException("Simbolo desconhecido");
                     }
@@ -149,16 +154,24 @@ public class IsiScanner {
                     token.setText(term);
                     token.setType(7);
                     return token;
+
                 case 10: // Aritimetico
                     back();
                     token = new Token();
                     token.setText(term);
                     token.setType(5);
                     return token;
+
                 case 11: // final
                     token = new Token();
                     token.setText(term);
                     token.setType(99);
+                    acabou = true;
+                    return token;
+                case 12: // fim da linha
+                    token = new Token();
+                    token.setText(term);
+                    token.setType(6);
                     return token;
 
             }
@@ -187,6 +200,10 @@ public class IsiScanner {
 
     private boolean isEndOfFile(char c) {
         return c == '#';
+    }
+
+    private boolean isEndOfLine(char c){
+        return c == '%';
     }
 
     private boolean isAr(char c) {
