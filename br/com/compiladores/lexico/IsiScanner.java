@@ -211,11 +211,11 @@ public class IsiScanner {
     }
 
     private boolean isStartofLine(char c){
-        return c == '/';
+        return c == '㋡';
     }
 
     private boolean isAr(char c) {
-        return c == '+' || c == '-' || c == '*';
+        return c == '+' || c == '-' || c == '*' || c == '/';
     }
 
     private char nextChar() {
