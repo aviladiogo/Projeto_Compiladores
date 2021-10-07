@@ -32,12 +32,9 @@ public class IsiScanner {
             return null;
         }
         estado = 0;
-        Boolean acabou = false;
         while (true) {
             currentChar = nextChar();
-            if(acabou == true){
-                return null;
-            }
+
             switch (estado) {
                 case 0:
                     if (isSpace(currentChar)) {
@@ -166,16 +163,14 @@ public class IsiScanner {
                     token = new Token();
                     token.setText(term);
                     token.setType(99);
-                    acabou = true;
-                    return token;
+                    break;
                 case 12: // fim da linha
                     token = new Token();
                     token.setText(term);
                     token.setType(6);
                     return token;
-
-            }
-        }
+                }
+            }  
     }
 
     private boolean isDigit(char c) {
