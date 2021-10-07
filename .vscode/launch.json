@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MainCase",
+            "request": "launch",
+            "mainClass": "br.com.compiladores.main.MainCase",
+            "projectName": "COMPILAS_fd5ea59a"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

@@ -66,9 +66,13 @@ public class Token {
 		
 		case 5:
 			return "Token [type= ARITIMETICO" + ", text= " + text + "]";
+            
         case 6:
             return "Token [type= FIM DA LINHA" + ", text= " + text + "]";
-		
+
+		case 15:
+            return "Token [type= COMEÇO DA LINHA" + ", text= " + text + "]";
+
 		case 99: 
 			return "Token [type= ENCERRA PROGRAMA" + ", text= " + text + "]";
 	
