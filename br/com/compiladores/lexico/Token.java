@@ -65,7 +65,7 @@ public class Token {
             case 9:
                 return "Token [type= DOUBLE" + ", text= " + text + "]";
             case 14:
-                return "Token [type= EDNALDO PEREIRA" + ", text= " + text + "]";
+                return "Token [type= VOCÊ NÃO VALE NADA, VOCÊ VALE TUDO \n VOCÊ TOPA QUALQUER PARADA, POIS VOCÊ QUER SER TUDO \n" + ", text= " + text + "]";
             case 15:
                 return "Token [type= COMEÇO DA LINHA" + ", text= " + text + "]";
             case 98:
