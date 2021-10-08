@@ -61,10 +61,10 @@ public class IsiScanner {
                     } else if (isEndOfLine(currentChar)) {
                         term += currentChar;
                         estado = 12;
-                    } else if(isStartofLine(currentChar)){
+                    } else if (isStartofLine(currentChar)) {
                         term += currentChar;
                         estado = 13;
-                    }else {
+                    } else {
                         throw new IsiLexicalException("Simbolo desconhecido");
                     }
                     break;
@@ -172,6 +172,7 @@ public class IsiScanner {
                     token.setText(term);
                     token.setType(99);
                     return token;
+
                 case 12: // fim da linha
                     token = new Token();
                     token.setText(term);
@@ -195,10 +196,11 @@ public class IsiScanner {
                         token.setText(term);
                         token.setType(0);
                         return token;
-                }
-                }
-            }  
+                     }
+            }
+        }  
     }
+    
 
 
     private boolean isDigit(char c) {
@@ -225,11 +227,11 @@ public class IsiScanner {
         return c == '#';
     }
 
-    private boolean isEndOfLine(char c){
+    private boolean isEndOfLine(char c) {
         return c == '%';
     }
 
-    private boolean isStartofLine(char c){
+    private boolean isStartofLine(char c) {
         return c == '㋡';
     }
 
