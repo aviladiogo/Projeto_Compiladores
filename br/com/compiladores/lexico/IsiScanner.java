@@ -196,6 +196,19 @@ public class IsiScanner {
                         token.setType(0);
                         return token;
                 }
+                    
+                case 15: //EDNALDO PEREIRA
+                    token = new Token();
+                    back();
+                    if (term.equals("ednaldopereira") ) {
+                        token.setText(term);
+                        token.setType(14);
+                        return token;
+                    } else {
+                        token.setText(term);
+                        token.setType(14);
+                        return token;
+                }    
                 }
             }  
     }
