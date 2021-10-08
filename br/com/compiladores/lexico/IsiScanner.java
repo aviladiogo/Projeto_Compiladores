@@ -180,6 +180,7 @@ public class IsiScanner {
                     return token;
 
                 case 13: // começo da linha
+                    back();
                     token = new Token();
                     token.setText(term);
                     token.setType(15);
