@@ -73,6 +73,8 @@ public class Token {
                 return "Token [type= FIFA 22 :) " + ", text= " + text + "]";
             case 99:
                 return "Token [type= ENCERRA PROGRAMA" + ", text= " + text + "]";
+            case 100:
+                return "Token [type= COMENTARIO" +", text= " + text + "]";
 
         }
         return text;

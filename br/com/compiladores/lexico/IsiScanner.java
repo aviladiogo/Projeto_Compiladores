@@ -64,7 +64,12 @@ public class IsiScanner {
                     } else if (isStartofLine(currentChar)) {
                         term += currentChar;
                         estado = 13;
-                    } else {
+                    } else if (isCommentary(currentChar)){
+                        term += currentChar;
+                        estado = 16;
+                    }
+                    
+                    else {
                         throw new IsiLexicalException("Simbolo desconhecido");
                     }
                     break;
@@ -215,6 +220,19 @@ public class IsiScanner {
                         return token;
 
                     }
+                case 16: // comentario
+                    
+                    token = new Token();
+                    back();
+                    if(term.equals("^")){
+                        token.setText(term);
+                        token.setType(100);
+                        return token; }
+                    else {
+                        token.setText(term);
+                        token.setType(0);
+                        return token;
+                    }
             }
         }
 
@@ -250,6 +268,9 @@ public class IsiScanner {
 
     private boolean isStartofLine(char c) {
         return c == '㋡';
+    }
+    private boolean isCommentary(char c){
+        return c == '^';
     }
 
     private boolean isAr(char c) {
