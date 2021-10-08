@@ -11,6 +11,7 @@ public class Token {
     public static final int TK_SPECIAL = 7;
     public static final int TK_RESERVED = 8;
     public static final int TK_FLOAT = 9;
+    public static final int TK_EDNALDO = 14;
     public static final int TK_EASTEREGG = 98;
     public static final int TK_END = 99;
 
@@ -63,6 +64,9 @@ public class Token {
                 return "Token [type= PALAVRA RESERVADA" + ", text= " + text + "]";
             case 9:
                 return "Token [type= DOUBLE" + ", text= " + text + "]";
+            case 14:
+                return "Token [type= VOCÊ NÃO VALE NADA, VOCÊ VALE TUDO \n VOCÊ TOPA QUALQUER PARADA, POIS VOCÊ QUER SER TUDO \n"
+                        + ", text= " + text + "]";
             case 15:
                 return "Token [type= COMEÇO DA LINHA" + ", text= " + text + "]";
             case 98:

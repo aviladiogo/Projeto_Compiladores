@@ -108,9 +108,12 @@ public class IsiScanner {
                     if (isChar(currentChar) || isDigit(currentChar)) {
                         term += currentChar;
                         estado = 5;
-                    }else if(term.equals("bola")){
+                    } else if (term.equals("bola")) {
                         back();
                         estado = 14;
+                    } else if (term.equals("ednaldopereira")) {
+                        back();
+                        estado = 15;
                     } else {
                         back();
                         estado = 6;
@@ -125,7 +128,7 @@ public class IsiScanner {
                         token.setText(term);
                         token.setType(8);
                         return token;
-                    }  else {
+                    } else {
                         token.setText(term);
                         token.setType(0);
                         return token;
@@ -168,7 +171,7 @@ public class IsiScanner {
 
                 case 11: // final
                     token = new Token();
-                    
+
                     token.setText(term);
                     token.setType(99);
                     return token;
@@ -185,11 +188,11 @@ public class IsiScanner {
                     token.setText(term);
                     token.setType(15);
                     return token;
-                
-                case 14: //EasterEgg
+
+                case 14: // EasterEgg
                     token = new Token();
                     back();
-                    if (term.equals("bola") ) {
+                    if (term.equals("bola")) {
                         token.setText(term);
                         token.setType(98);
                         return token;
@@ -197,12 +200,25 @@ public class IsiScanner {
                         token.setText(term);
                         token.setType(0);
                         return token;
-                     }
-            }
-        }  
-    }
-    
 
+                    }
+                case 15: // EDNALDO PEREIRA
+                    token = new Token();
+                    back();
+                    if (term.equals("ednaldopereira")) {
+                        token.setText(term);
+                        token.setType(14);
+                        return token;
+                    } else {
+                        token.setText(term);
+                        token.setType(0);
+                        return token;
+
+                    }
+            }
+        }
+
+    }
 
     private boolean isDigit(char c) {
         return c >= '0' && c <= '9';
